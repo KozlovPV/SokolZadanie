@@ -1,3 +1,7 @@
+import javax.sound.midi.Soundbank;
+import java.sql.SQLOutput;
+import java.util.SortedMap;
+
 /**
  * Класс хранилища, в котором содержатся отчеты
  */
@@ -28,7 +32,7 @@ public class ArrayStorage {
     Report get(String uuid) {
         int i = 0;
         while (storage[i] != null) {
-            if (this.equals(storage[i])) {
+            if (uuid.toString().equals(storage[i].toString())) {
                 return storage[i];
             }
             i++;
@@ -41,7 +45,7 @@ public class ArrayStorage {
     void delete(String uuid) {
         int i = 0;
         while (storage[i] != null) {
-            if (this.equals(storage[i])) {
+            if (uuid.toString().equals(storage[i].toString())) {
                 storage[i] = null;
             }
             i++;
@@ -55,11 +59,12 @@ public class ArrayStorage {
      * @return array, contains only Reports in storage (without null)
      */
     Report[] getAll() {
-        int n=size();
-        int i=0;
-        Report[] timeStorage= new Report[n];
-        while(storage[i]!=null){
-            timeStorage[i]=storage[i];
+        int n = size();
+        int i = 0;
+        Report[] timeStorage = new Report[n];
+        while (storage[i] != null) {
+            timeStorage[i] = storage[i];
+            i++;
         }
         return timeStorage;
     }
