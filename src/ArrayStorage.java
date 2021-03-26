@@ -32,7 +32,7 @@ public class ArrayStorage {
     Report get(String uuid) {
         int i = 0;
         while (storage[i] != null) {
-            if (uuid.toString().equals(storage[i].toString())) {
+            if (uuid.equals(storage[i].toString())) {
                 return storage[i];
             }
             i++;
@@ -40,13 +40,28 @@ public class ArrayStorage {
         return null;
     }
 
+    void Change(int position){
+        position++;
+        Report temp=storage[position];
+        while(storage[position]!=null){
+            //MainTestArrayStorage.printAll();
+            storage[position-1]=temp;
+            position++;
+            temp=storage[position];
+        }
+        storage[position-1]=temp;
+        position++;
+        temp=storage[position];
+
+    }
 
     //TODO: удаляет отчет из хранилища
     void delete(String uuid) {
         int i = 0;
         while (storage[i] != null) {
-            if (uuid.toString().equals(storage[i].toString())) {
+            if (uuid.equals(storage[i].toString())) {
                 storage[i] = null;
+                Change(i);
             }
             i++;
         }
