@@ -2,13 +2,10 @@ import javax.sound.midi.Soundbank;
 import java.sql.SQLOutput;
 import java.util.SortedMap;
 
-/**
- * Класс хранилища, в котором содержатся отчеты
- */
+
 public class ArrayStorage {
     Report[] storage = new Report[10];
 
-    //TODO: очищает хранилище
     void clear() {
         int i = 0;
         while (storage[i] != null) {
@@ -17,8 +14,6 @@ public class ArrayStorage {
         }
     }
 
-
-    //TODO: сохраняет новый отчет (объект Report) в хранилище
     void save(Report r) {
         int i = 0;
         while (storage[i] != null) {
@@ -27,8 +22,6 @@ public class ArrayStorage {
         storage[i] = r;
     }
 
-
-    //TODO: возвращается отчет из хранилища
     Report get(String uuid) {
         int i = 0;
         while (storage[i] != null) {
@@ -40,22 +33,20 @@ public class ArrayStorage {
         return null;
     }
 
-    void Change(int position){
+    void Change(int position) {
         position++;
-        Report temp=storage[position];
-        while(storage[position]!=null){
+        Report temp = storage[position];
+        while (storage[position] != null) {
             //MainTestArrayStorage.printAll();
-            storage[position-1]=temp;
+            storage[position - 1] = temp;
             position++;
-            temp=storage[position];
+            temp = storage[position];
         }
-        storage[position-1]=temp;
+        storage[position - 1] = temp;
         position++;
-        temp=storage[position];
-
+        temp = storage[position];
     }
 
-    //TODO: удаляет отчет из хранилища
     void delete(String uuid) {
         int i = 0;
         while (storage[i] != null) {
@@ -67,12 +58,6 @@ public class ArrayStorage {
         }
     }
 
-
-    //TODO: возвращает из хранилища все отчеты в виде массива
-
-    /**
-     * @return array, contains only Reports in storage (without null)
-     */
     Report[] getAll() {
         int n = size();
         int i = 0;
@@ -84,8 +69,6 @@ public class ArrayStorage {
         return timeStorage;
     }
 
-
-    //TODO: возвращает количество отчетов в хранилище
     int size() {
         int i = 0;
         while (storage[i] != null) {

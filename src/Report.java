@@ -10,4 +10,11 @@ public class Report {
     public String toString() {
         return uuid;
     }
+
+    public Report(String uuid) {
+        this.uuid = uuid;
+    }
+    public Report() {
+
+    }
 }
